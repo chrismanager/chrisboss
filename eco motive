@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eco Motive - Sustainable Waste Management</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom CSS for elements that need more specific styling */
+        .gradient-bg {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        }
+        .qr-scanner {
+            position: relative;
+            width: 250px;
+            height: 250px;
+            margin: 0 auto;
+            border: 15px solid #fff;
+            box-shadow: 0 0 0 1px rgba(0,0,0,0.1), 0 0 30px rgba(0,0,0,0.2);
+        }
+        .qr-scanner::before, .qr-scanner::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border-color: #10b981;
+            border-style: solid;
+            border-width: 0;
+        }
+        .qr-scanner::before {
+            top: 0;
+            left: 0;
+            border-top-width: 5px;
+            border-left-width: 5px;
+        }
+        .qr-scanner::after {
+            bottom: 0;
+            right: 0;
+            border-bottom-width: 5px;
+            border-right-width: 5px;
+        }
+        .dashboard-card {
+            transition: all 0.3s ease;
+        }
+        .dashboard-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        .secure-badge {
+            position: relative;
+            padding-left: 25px;
+        }
+        .secure-badge::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 18px;
+            height: 18px;
+            background-color: #10b981;
+            border-radius: 50%;
+        }
+        .secure-badge::after {
+            content: '\f023';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 4px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 10px;
+        }
+        .admin-panel {
+            background-color: #1f2937;
+        }
+        .admin-nav-item {
+            transition: all 0.2s ease;
+        }
+        .admin-nav-item:hover {
+            background-color: #374151;
+        }
+        .login-form {
+            max-width: 400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .form-input {
+            transition: all 0.3s ease;
+        }
+        .form-input:focus {
+            border-color: #10b981;
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50">
+    <!-- Navigation -->
+    <nav class="gradient-bg text-white shadow-lg">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-recycle text-2xl"></i>
+                    <span class="text-xl font-bold">Eco Motive</span>
+                </div>
+                <div class="hidden md:flex space-x-6">
+                    <a href="#how-it-works" class="hover:text-gray-200 transition">How It Works</a>
+                    <a href="#benefits" class="hover:text-gray-200 transition">Benefits</a>
+                    <a href="#rewards" class="hover:text-gray-200 transition">Rewards</a>
+                    <a href="#contact" class="hover:text-gray-200 transition">Contact</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button id="loginBtn" class="bg-white text-emerald-700 px-4 py-2 rounded-full font-medium hover:bg-gray-100 transition">
+                        <i class="fas fa-sign-in-alt mr-2"></i>Login
+                    </button>
+                    <button class="md:hidden text-xl" id="mobileMenuBtn">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-emerald-700 px-4 py-2">
+            <div class="flex flex-col space-y-3">
+                <a href="#how-it-works" class="hover:text-gray-200 transition">How It Works</a>
+                <a href="#benefits" class="hover:text-gray-200 transition">Benefits</a>
+                <a href="#rewards" class="hover:text-gray-200 transition">Rewards</a>
+                <a href="#contact" class="hover:text-gray-200 transition">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="gradient-bg text-white py-16 md:py-24">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">Sustainable Waste Management Made Simple</h1>
+                <p class="text-xl mb-8">Earn rewards while helping the environment with our solar-powered waste compactor system.</p>
+                <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
+                    <button class="bg-white text-emerald-700 px-6 py-3 rounded-full font-bold hover:bg-gray-100 transition">
+                        Get Started <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                    <button class="bg-transparent border-2 border-white px-6 py-3 rounded-full font-bold hover:bg-white hover:text-emerald-700 transition">
+                        Learn More
+                    </button>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <img src="https://images.unsplash.com/photo-1604176354204-873a48553993?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                     alt="Waste compactor" 
+                     class="rounded-lg shadow-2xl max-w-full h-auto">
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-4">How It Works</h2>
+            <p class="text-center text-gray-600 max-w-2xl mx-auto mb-12">Our simple 6-step process makes recycling rewarding and accessible to everyone.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Step 1 -->
+                <div class="bg-gray-50 p-6 rounded-xl shadow-sm hover:shadow-md transition">
+                    <div class="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mb-4">
+                        <span class="text-emerald-700 font-bold text-xl">1</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Collect Waste</h3>
+                    <p class="text-gray-600">Gather plastic, organic, or other recyclable materials at your home or business.</p>
+                </div>
+                
+                <!-- Step 2 -->
+                <div class="bg-gray-50 p-6 rounded-xl shadow-sm hover:shadow-md transition">
+                    <div class="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mb-4">
+                        <span class="text-emerald-700 font-bold text-xl">2</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Compact It</h3>
+                    <p class="text-gray-600">Use our solar-powered Ecoharvest Compactor to crush and store the waste efficiently.</p>
+                </div>
+                
+                <!-- Step 3 -->
+                <div class="bg-gray-50 p-6 rounded-xl shadow-sm hover:shadow-md transition">
+                    <div class="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mb-4">
+                        <span class="text-emerald-700 font-bold text-xl">3</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Schedule Pickup</h3>
+                    <p class="text-gray-600">Notify us when your compactor is full and we'll arrange collection.</p>
+                </div>
+                
+                <!-- Step 4 -->
+                <div class="bg-gray-50 p-6 rounded-xl shadow-sm hover:shadow-md transition">
+                    <div class="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mb-4">
+                        <span class="text-emerald-700 font-bold text-xl">4</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Receive QR Code</h3>
+                    <p class="text-gray-600">After pickup, our team provides a unique QR code as proof of collection.</p>
+                </div>
+                
+                <!-- Step 5 -->
+                <div class="bg-gray-50 p-6 rounded-xl shadow-sm hover:shadow-md transition">
+                    <div class="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mb-4">
+                        <span class="text-emerald-700 font-bold text-xl">5</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Scan QR Code</h3>
+                    <p class="text-gray-600">Use our mobile app to scan the QR code and verify your contribution.</p>
+                </div>
+                
+                <!-- Step 6 -->
+                <div class="bg-gray-50 p-6 rounded-xl shadow-sm hover:shadow-md transition">
+                    <div class="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mb-4">
+                        <span class="text-emerald-700 font-bold text-xl">6</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Earn Rewards</h3>
+                    <p class="text-gray-600">Get points added to your account redeemable for vouchers and other benefits.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- QR Scanner Demo -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h2 class="text-3xl font-bold mb-4">Scan Your QR Code</h2>
+                    <p class="text-gray-600 mb-6">After our team collects your compacted waste, you'll receive a unique QR code. Simply scan it with our app to earn your rewards.</p>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-emerald-500 mt-1 mr-2"></i>
+                            <span>Instant point verification</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-emerald-500 mt-1 mr-2"></i>
+                            <span>Secure transaction history</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-emerald-500 mt-1 mr-2"></i>
+                            <span>Reward tracking</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <div class="qr-scanner bg-gray-200 flex items-center justify-center">
+                        <div class="text-center p-4">
+                            <i class="fas fa-qrcode text-6xl text-gray-500 mb-2"></i>
+                            <p class="text-gray-600">Point camera at QR code</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="benefits" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-4">Key Benefits</h2>
+            <p class="text-center text-gray-600 max-w-2xl mx-auto mb-12">Why our system stands out from traditional recycling programs.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-emerald-50 p-6 rounded-xl border border-emerald-100">
+                    <div class="w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-truck text-emerald-700"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Reduced Transport</h3>
+                    <p class="text-gray-600">Compacted waste takes up less space, making transport more efficient and eco-friendly.</p>
+                </div>
+                
+                <div class="bg-emerald-50 p-6 rounded-xl border border-emerald-100">
+                    <div class="w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-solar-panel text-emerald-700"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Solar Powered</h3>
+                    <p class="text-gray-600">Our compactors run on solar energy, making them sustainable and cost-effective.</p>
+                </div>
+                
+                <div class="bg-emerald-50 p-6 rounded-xl border border-emerald-100">
+                    <div class="w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-gift text-emerald-700"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Tangible Rewards</h3>
+                    <p class="text-gray-600">Earn points redeemable for vouchers, discounts, and other benefits.</p>
+                </div>
+                
+                <div class="bg-emerald-50 p-6 rounded-xl border border-emerald-100">
+                    <div class="w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-users text-emerald-700"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Community Impact</h3>
+                    <p class="text-gray-600">Join a network of environmentally conscious households and businesses.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rewards Section -->
+    <section id="rewards" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-4">Rewards Program</h2>
+            <p class="text-center text-gray-600 max-w-2xl mx-auto mb-12">Your eco-friendly actions deserve recognition. Here's what you can earn.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-xl shadow-sm text-center hover:shadow-lg transition">
+                    <div class="w-20 h-20 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-coins text-3xl text-emerald-700"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Basic Tier</h3>
+                    <p class="text-gray-600 mb-6">Up to 500 points</p>
+                    <ul class="space-y-3 mb-8 text-left">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-emerald-500 mt-1 mr-2"></i>
+                            <span>$5 local business voucher</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-emerald-500 mt-1 mr-2"></i>
+                            <span>Eco-friendly product discounts</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-emerald-500 mt-1 mr-2"></i>
+                            <span>Monthly newsletter</span>
+                        </li>
+                    </ul>
+                    <button class="bg-emerald-600 text-white px-6 py-2 rounded-full hover:bg-emerald-700 transition">
+                        Learn More
+                    </button>
+                </div>
+                
+                <div class="bg-white p-8 rounded-xl shadow-lg border-2 border-emerald-400 text-center transform scale-105">
+                    <div class="w-20 h-20 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-gem text-3xl text-emerald-700"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Premium Tier</h3>
+                    <p class="text-gray-600 mb-6">501-2000 points</p>
+                    <ul class="space-y-3 mb-8 text-left">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-emerald-500 mt-1 mr-2"></i>
+                            <span>$20 shopping voucher</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-emerald-500 mt-1 mr-2"></i>
+                            <span>Exclusive partner discounts</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-emerald-500 mt-1 mr-2"></i>
+                            <span>Priority pickup scheduling</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-emerald-500 mt-1 mr-2"></i>
+                            <span>Quarterly eco-gifts</span>
+                        </li>
+                    </ul>
+                    <button class="gradient-bg text-white px-6 py-2 rounded-full hover:opacity-90 transition">
+                        Most Popular
+                    </button>
+                </div>
+                
+                <div class="bg-white p-8 rounded-xl shadow-sm text-center hover:shadow-lg transition">
+                    <div class="w-20 h-20 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-crown text-3xl text-emerald-700"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Elite Tier</h3>
+                    <p class="text-gray-600 mb-6">2000+ points</p>
+                    <ul class="space-y-3 mb-8 text-left">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-emerald-500 mt-1 mr-2"></i>
+                            <span>$50 gift cards</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-emerald-500 mt-1 mr-2"></i>
+                            <span>VIP partner events</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-emerald-500 mt-1 mr-2"></i>
+                            <span>Personalized service</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-emerald-500 mt-1 mr-2"></i>
+                            <span>Annual sustainability report</span>
+                        </li>
+                    </ul>
+                    <button class="bg-emerald-600 text-white px-6 py-2 rounded-full hover:bg-emerald-700 transition">
+                        Learn More
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-4">Contact Us</h2>
+            <p class="text-center text-gray-600 max-w-2xl mx-auto mb-12">Have questions? Get in touch with our team.</p>
+            
+            <div class="flex flex-col md:flex-row gap-8">
+                <div class="md:w-1/2">
+                    <form id="contactForm" class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-gray-700 mb-2">Name</label>
+                            <input type="text" id="name" class="w-full px-4 py-2 border rounded-lg form-input focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-gray-700 mb-2">Email</label>
+                            <input type="email" id="email" class="w-full px-4 py-2 border rounded-lg form-input focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                        </div>
+                        <div>
+                            <label for="subject" class="block text-gray-700 mb-2">Subject</label>
+                            <select id="subject" class="w-full px-4 py-2 border rounded-lg form-input focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                                <option value="">Select a subject</option>
+                                <option value="sales">Sales Inquiry</option>
+                                <option value="support">Technical Support</option>
+                                <option value="partnership">Partnership Opportunity</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="message" class="block text-gray-700 mb-2">Message</label>
+                            <textarea id="message" rows="4" class="w-full px-4 py-2 border rounded-lg form-input focus:outline-none focus:ring-2 focus:ring-emerald-500"></textarea>
+                        </div>
+                        <div class="flex items-center">
+                            <input type="checkbox" id="consent" class="mr-2">
+                            <label for="consent" class="text-gray-700">I agree to the <a href="#" class="text-emerald-600 hover:underline">privacy policy</a></label>
+                        </div>
+                        <button type="submit" class="gradient-bg text-white px-6 py-3 rounded-lg font-medium hover:opacity-90 transition w-full">
+                            Send Message <i class="fas fa-paper-plane ml-2"></i>
+                        </button>
+                    </form>
+                </div>
+                <div class="md:w-1/2">
+                    <div class="bg-gray-50 p-8 rounded-xl h-full">
+                        <h3 class="text-xl font-semibold mb-4">Our Information</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 bg-emerald-100 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-map-marker-alt text-emerald-700"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium">Address</h4>
+                                    <p class="text-gray-600">123 Green Way, Eco City, EC 12345</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 bg-emerald-100 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-phone-alt text-emerald-700"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium">Phone</h4>
+                                    <p class="text-gray-600">+1 (555) 123-4567</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 bg-emerald-100 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-envelope text-emerald-700"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium">Email</h4>
+                                    <p class="text-gray-600">info@ecomotive.com</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 bg-emerald-100 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-clock text-emerald-700"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium">Hours</h4>
+                                    <p class="text-gray-600">Monday - Friday: 9AM - 5PM</p>
+                                    <p class="text-gray-600">Saturday: 10AM - 2PM</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-8">
+                            <h4 class="font-medium mb-3">Follow Us</h4>
+                            <div class="flex space-x-4">
+                                <a href="#" class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center hover:bg-emerald-100 transition">
+                                    <i class="fab fa-facebook-f text-gray-700"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center hover:bg-emerald-100 transition">
+                                    <i class="fab fa-twitter text-gray-700"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center hover:bg-emerald-100 transition">
+                                    <i class="fab fa-instagram text-gray-700"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center hover:bg-emerald-100 transition">
+                                    <i class="fab fa-linkedin-in text-gray-700"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Email Protected Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-md overflow-hidden">
+                <div class="md:flex">
+                    <div class="md:w-1/2 gradient-bg p-8 text-white">
+                        <h2 class="text-2xl font-bold mb-4">Secure Email System</h2>
+                        <p class="mb-6">Our protected email system ensures your communications are safe and private.</p>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <i class="fas fa-lock mt-1 mr-3"></i>
+                                <div>
+                                    <h4 class="font-semibold">End-to-End Encryption</h4>
+                                    <p class="text-sm opacity-90">All messages are encrypted from sender to recipient</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-shield-alt mt-1 mr-3"></i>
+                                <div>
+                                    <h4 class="font-semibold">SPAM Protection</h4>
+                                    <p class="text-sm opacity-90">Advanced filters block unwanted messages</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-user-shield mt-1 mr-3"></i>
+                                <div>
+                                    <h4 class="font-semibold">Identity Verification</h4>
+                                    <p class="text-sm opacity-90">Two-factor authentication for all accounts</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2 p-8">
+                        <h3 class="text-xl font-semibold mb-4">Send a Secure Message</h3>
+                        <form id="secureEmailForm">
+                            <div class="mb-4">
+                                <label for="secureEmail" class="block text-gray-700 mb-2">Your Email</label>
+                                <input type="email" id="secureEmail" class="w-full px-4 py-2 border rounded-lg form-input focus:outline-none focus:ring-2 focus:ring-emerald-500" required>
+                            </div>
+                            <div class="mb-4">
+                                <label for="secureSubject" class="block text-gray-700 mb-2">Subject</label>
+                                <input type="text" id="secureSubject" class="w-full px-4 py-2 border rounded-lg form-input focus:outline-none focus:ring-2 focus:ring-emerald-500" required>
+                            </div>
+                            <div class="mb-4">
+                                <label for="secureMessage" class="block text-gray-700 mb-2">Message</label>
+                                <textarea id="secureMessage" rows="3" class="w-full px-4 py-2 border rounded-lg form-input focus:outline-none focus:ring-2 focus:ring-emerald-500" required></textarea>
+                            </div>
+                            <div class="mb-4">
+                                <div class="secure-badge text-sm text-gray-600">
+                                    This message will be encrypted and secure
+                                </div>
+                            </div>
+                            <button type="submit" class="gradient-bg text-white px-6 py-2 rounded-lg font-medium hover:opacity-90 transition w-full">
+                                Send Securely <i class="fas fa-lock ml-2"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admin Panel (Hidden by default) -->
+    <div id="adminPanel" class="hidden fixed inset-0 z-50 overflow-y-auto">
+        <div class="flex items-center justify-center min-h-screen">
+            <div class="fixed inset-0 bg-black bg-opacity-50 transition-opacity"></div>
+            <div class="admin-panel rounded-lg shadow-xl transform transition-all w-full max-w-6xl">
+                <div class="flex">
+                    <!-- Admin Sidebar -->
+                    <div class="w-64 bg-gray-800 text-white p-4">
+                        <div class="flex items-center mb-8">
+                            <i class="fas fa-user-shield text-2xl mr-3"></i>
+                            <h2 class="text-xl font-bold">Admin Panel</h2>
+                        </div>
+                        <nav>
+                            <ul class="space-y-2">
+                                <li>
+                                    <a href="#" class="admin-nav-item flex items-center p-3 rounded-lg bg-gray-700">
+                                        <i class="fas fa-tachometer-alt mr-3"></i>
+                                        Dashboard
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="admin-nav-item flex items-center p-3 rounded-lg hover:bg-gray-700">
+                                        <i class="fas fa-users mr-3"></i>
+                                        Users
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="admin-nav-item flex items-center p-3 rounded-lg hover:bg-gray-700">
+                                        <i class="fas fa-qrcode mr-3"></i>
+                                        QR Codes
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="admin-nav-item flex items-center p-3 rounded-lg hover:bg-gray-700">
+                                        <i class="fas fa-gift mr-3"></i>
+                                        Rewards
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="admin-nav-item flex items-center p-3 rounded-lg hover:bg-gray-700">
+                                        <i class="fas fa-shopping-cart mr-3"></i>
+                                        Purchases
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="admin-nav-item flex items-center p-3 rounded-lg hover:bg-gray-700">
+                                        <i class="fas fa-chart-line mr-3"></i>
+                                        Analytics
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="admin-nav-item flex items-center p-3 rounded-lg hover:bg-gray-700">
+                                        <i class="fas fa-cog mr-3"></i>
+                                        Settings
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                        <div class="mt-8 pt-4 border-t border-gray-700">
+                            <button id="logoutAdminBtn" class="w-full flex items-center p-3 rounded-lg hover:bg-gray-700">
+                                <i class="fas fa-sign-out-alt mr-3"></i>
+                                Logout
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Admin Content -->
+                    <div class="flex-1 bg-gray-100 p-6">
+                        <div class="flex justify-between items-center mb-6">
+                            <h3 class="text-2xl font-bold text-gray-800">Admin Dashboard</h3>
+                            <div class="flex items-center space-x-4">
+                                <div class="relative">
+                                    <i class="fas fa-bell text-gray-500 text-xl"></i>
+                                    <span class="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="w-8 h-8 bg-emerald-500 rounded-full flex items-center justify-center text-white mr-2">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                    <span class="font-medium">Admin</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Stats Cards -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                            <div class="dashboard-card bg-white p-6 rounded-lg shadow">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <p class="text-gray-500">Total Users</p>
+                                        <h4 class="text-2xl font-bold mt-1">1,248</h4>
+                                    </div>
+                                    <div class="p-3 bg-blue-100 rounded-lg">
+                                        <i class="fas fa-users text-blue-500"></i>
+                                    </div>
+                                </div>
+                                <div class="mt-4 pt-2 border-t border-gray-100">
+                                    <p class="text-sm text-green-500 flex items-center">
+                                        <i class="fas fa-arrow-up mr-1"></i> 12.5% from last month
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="dashboard-card bg-white p-6 rounded-lg shadow">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <p class="text-gray-500">QR Scans</p>
+                                        <h4 class="text-2xl font-bold mt-1">3,742</h4>
+                                    </div>
+                                    <div class="p-3 bg-green-100 rounded-lg">
+                                        <i class="fas fa-qrcode text-green-500"></i>
+                                    </div>
+                                </div>
+                                <div class="mt-4 pt-2 border-t border-gray-100">
+                                    <p class="text-sm text-green-500 flex items-center">
+                                        <i class="fas fa-arrow-up mr-1"></i> 8.3% from last month
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="dashboard-card bg-white p-6 rounded-lg shadow">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <p class="text-gray-500">Rewards Redeemed</p>
+                                        <h4 class="text-2xl font-bold mt-1">562</h4>
+                                    </div>
+                                    <div class="p-3 bg-purple-100 rounded-lg">
+                                        <i class="fas fa-gift text-purple-500"></i>
+                                    </div>
+                                </div>
+                                <div class="mt-4 pt-2 border-t border-gray-100">
+                                    <p class="text-sm text-green-500 flex items-center">
+                                        <i class="fas fa-arrow-up mr-1"></i> 5.7% from last month
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="dashboard-card bg-white p-6 rounded-lg shadow">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <p class="text-gray-500">Revenue</p>
+                                        <h4 class="text-2xl font-bold mt-1">$24,389</h4>
+                                    </div>
+                                    <div class="p-3 bg-yellow-100 rounded-lg">
+                                        <i class="fas fa-dollar-sign text-yellow-500"></i>
+                                    </div>
+                                </div>
+                                <div class="mt-4 pt-2 border-t border-gray-100">
+                                    <p class="text-sm text-red-500 flex items-center">
+                                        <i class="fas fa-arrow-down mr-1"></i> 2.1% from last month
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Recent Activity -->
+                        <div class="bg-white rounded-lg shadow p-6 mb-8">
+                            <h4 class="text-lg font-semibold mb-4">Recent Activity</h4>
+                            <div class="overflow-x-auto">
+                                <table class="min-w-full divide-y divide-gray-200">
+                                    <thead class="bg-gray-50">
+                                        <tr>
+                                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">User</th>
+                                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Action</th>
+                                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Points</th>
+                                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Time</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="bg-white divide-y divide-gray-200">
+                                        <tr>
+                                            <td class="px-6 py-4 whitespace-nowrap">
+                                                <div class="flex items-center">
+                                                    <div class="flex-shrink-0 h-10 w-10">
+                                                        <div class="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center">
+                                                            <i class="fas fa-user text-blue-500"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="ml-4">
+                                                        <div class="text-sm font-medium text-gray-900">John Smith</div>
+                                                        <div class="text-sm text-gray-500">john@example.com</div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap">
+                                                <div class="text-sm text-gray-900">QR Code Scan</div>
+                                                <div class="text-sm text-gray-500">Plastic waste</div>
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap">
+                                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">+50</span>
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                10 minutes ago
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-6 py-4 whitespace-nowrap">
+                                                <div class="flex items-center">
+                                                    <div class="flex-shrink-0 h-10 w-10">
+                                                        <div class="h-10 w-10 rounded-full bg-purple-100 flex items-center justify-center">
+                                                            <i class="fas fa-user text-purple-500"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="ml-4">
+                                                        <div class="text-sm font-medium text-gray-900">Sarah Johnson</div>
+                                                        <div class="text-sm text-gray-500">sarah@example.com</div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap">
+                                                <div class="text-sm text-gray-900">Reward Redeemed</div>
+                                                <div class="text-sm text-gray-500">$10 voucher</div>
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap">
+                                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">-200</span>
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                1 hour ago
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-6 py-4 whitespace-nowrap">
+                                                <div class="flex items-center">
+                                                    <div class="flex-shrink-0 h-10 w-10">
+                                                        <div class="h-10 w-10 rounded-full bg-green-100 flex items-center justify-center">
+                                                            <i class="fas fa-user text-green-500"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="ml-4">
+                                                        <div class="text-sm font-medium text-gray-900">Michael Brown</div>
+                                                        <div class="text-sm text-gray-500">michael@example.com</div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap">
+                                                <div class="text-sm text-gray-900">QR Code Scan</div>
+                                                <div class="text-sm text-gray-500">Organic waste</div>
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap">
+                                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">+30</span>
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                3 hours ago
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        
+                        <!-- Charts -->
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                            <div class="bg-white p-6 rounded-lg shadow">
+                                <h4 class="text-lg font-semibold mb-4">User Growth</h4>
+                                <div class="h-64 bg-gray-100 rounded flex items-center justify-center">
+                                    <p class="text-gray-500">Chart would appear here</p>
+                                </div>
+                            </div>
+                            <div class="bg-white p-6 rounded-lg shadow">
+                                <h4 class="text-lg font-semibold mb-4">Waste Types</h4>
+                                <div class="h-64 bg-gray-100 rounded flex items-center justify-center">
+                                    <p class="text-gray-500">Chart would appear here</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="hidden fixed inset-0 z-50 overflow-y-auto">
+        <div class="flex items-center justify-center min-h-screen">
+            <div class="fixed inset-0 bg-black bg-opacity-50 transition-opacity"></div>
+            <div class="login-form relative transform transition-all w-full max-w-md p-6">
+                <div class="absolute top-4 right-4">
+                    <button id="closeLoginModal" class="text-gray-400 hover:text-gray-500">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="text-center mb-6">
+                    <i class="fas fa-recycle text-5xl text-emerald-500 mb-4"></i>
+                    <h2 class="text-2xl font-bold">Welcome Back</h2>
+                    <p class="text-gray-600">Sign in to your Eco Motive account</p>
+                </div>
+                <form id="loginForm">
+                    <div class="mb-4">
+                        <label for="loginEmail" class="block text-gray-700 mb-2">Email Address</label>
+                        <input type="email" id="loginEmail" class="w-full px-4 py-2 border rounded-lg form-input focus:outline-none focus:ring-2 focus:ring-emerald-500" required>
+                    </div>
+                    <div class="mb-6">
+                        <label for="loginPassword" class="block text-gray-700 mb-2">Password</label>
+                        <input type="password" id="loginPassword" class="w-full px-4 py-2 border rounded-lg form-input focus:outline-none focus:ring-2 focus:ring-emerald-500" required>
+                    </div>
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="flex items-center">
+                            <input type="checkbox" id="rememberMe" class="mr-2">
+                            <label for="rememberMe" class="text-gray-700">Remember me</label>
+                        </div>
+                        <a href="#" class="text-emerald-600 hover:underline">Forgot password?</a>
+                    </div>
+                    <button type="submit" class="gradient-bg text-white px-6 py-3 rounded-lg font-medium hover:opacity-90 transition w-full mb-4">
+                        Sign In
+                    </button>
+                    <div class="text-center">
+                        <p class="text-gray-600">Don't have an account? <a href="#" class="text-emerald-600 hover:underline">Sign up</a></p>
+                    </div>
+                    <div class="mt-6">
+                        <div class="relative">
+                            <div class="absolute inset-0 flex items-center">
+                                <div class="w-full border-t border-gray-300"></div>
+                            </div>
+                            <div class="relative flex justify-center text-sm">
+                                <span class="px-2 bg-white text-gray-500">Or continue with</span>
+                            </div>
+                        </div>
+                        <div class="mt-6 grid grid-cols-2 gap-3">
+                            <button type="button" class="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                                <i class="fab fa-google mr-2"></i> Google
+                            </button>
+                            <button type="button" class="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                                <i class="fab fa-facebook-f mr-2"></i> Facebook
+                            </button>
+                        </div>
+                    </div>
+                </form>
+                <div class="mt-6 text-center text-xs text-gray-500">
+                    <p>By signing in, you agree to our <a href="#" class="underline">Terms of Service</a> and <a href="#" class="underline">Privacy Policy</a>.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Login Modal -->
+    <div id="adminLoginModal" class="hidden fixed inset-0 z-50 overflow-y-auto">
+        <div class="flex items-center justify-center min-h-screen">
+            <div class="fixed inset-0 bg-black bg-opacity-50 transition-opacity"></div>
+            <div class="login-form relative transform transition-all w-full max-w-md p-6">
+                <div class="absolute top-4 right-4">
+                    <button id="closeAdminLoginModal" class="text-gray-400 hover:text-gray-500">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="text-center mb-6">
+                    <i class="fas fa-user-shield text-5xl text-gray-700 mb-4"></i>
+                    <h2 class="text-2xl font-bold">Admin Portal</h2>
+                    <p class="text-gray-600">Restricted access</p>
+                </div>
+                <form id="adminLoginForm">
+                    <div class="mb-4">
+                        <label for="adminUsername" class="block text-gray-700 mb-2">Username</label>
+                        <input type="text" id="adminUsername" class="w-full px-4 py-2 border rounded-lg form-input focus:outline-none focus:ring-2 focus:ring-gray-500" required>
+                    </div>
+                    <div class="mb-6">
+                        <label for="adminPassword" class="block text-gray-700 mb-2">Password</label>
+                        <input type="password" id="adminPassword" class="w-full px-4 py-2 border rounded-lg form-input focus:outline-none focus:ring-2 focus:ring-gray-500" required>
+                    </div>
+                    <div class="mb-6">
+                        <label for="admin2FA" class="block text-gray-700 mb-2">2FA Code</label>
+                        <input type="text" id="admin2FA" class="w-full px-4 py-2 border rounded-lg form-input focus:outline-none focus:ring-2 focus:ring-gray-500" placeholder="6-digit code" required>
+                    </div>
+                    <button type="submit" class="bg-gray-800 text-white px-6 py-3 rounded-lg font-medium hover:bg-gray-700 transition w-full mb-4">
+                        Authenticate
+                    </button>
+                    <div class="text-center text-xs text-gray-500">
+                        <p>This system is for authorized personnel only. Unauthorized access is prohibited.</p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <i class="fas fa-recycle text-2xl"></i>
+                        <span class="text-xl font-bold">Eco Motive</span>
+                    </div>
+                    <p class="text-gray-400 mb-4">Making sustainable waste management accessible and rewarding for everyone.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">How It Works</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Benefits</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Rewards</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">FAQ</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Legal</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Terms of Service</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Cookie Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">GDPR Compliance</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Newsletter</h3>
+                    <p class="text-gray-400 mb-4">Subscribe to get updates on new features and rewards.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Your email" class="px-4 py-2 rounded-l-lg focus:outline-none text-gray-800 w-full">
+                        <button type="submit" class="gradient-bg px-4 py-2 rounded-r-lg hover:opacity-90 transition">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 mb-4 md:mb-0">© 2023 Eco Motive. All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition">Privacy</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">Terms</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">Sitemap</a>
+                    <button id="adminAccessBtn" class="text-gray-400 hover:text-white transition">Admin Access</button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Login modal toggle
+        const loginBtn = document.getElementById('loginBtn');
+        const loginModal = document.getElementById('loginModal');
+        const closeLoginModal = document.getElementById('closeLoginModal');
+
+        loginBtn.addEventListener('click', function() {
+            loginModal.classList.remove('hidden');
+        });
+
+        closeLoginModal.addEventListener('click', function() {
+            loginModal.classList.add('hidden');
+        });
+
+        // Admin login modal toggle
+        const adminAccessBtn = document.getElementById('adminAccessBtn');
+        const adminLoginModal = document.getElementById('adminLoginModal');
+        const closeAdminLoginModal = document.getElementById('closeAdminLoginModal');
+
+        adminAccessBtn.addEventListener('click', function() {
+            adminLoginModal.classList.remove('hidden');
+        });
+
+        closeAdminLoginModal.addEventListener('click', function() {
+            adminLoginModal.classList.add('hidden');
+        });
+
+        // Admin panel access
+        const adminLoginForm = document.getElementById('adminLoginForm');
+        const adminPanel = document.getElementById('adminPanel');
+        const logoutAdminBtn = document.getElementById('logoutAdminBtn');
+
+        adminLoginForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            // In a real app, you would validate credentials here
+            adminLoginModal.classList.add('hidden');
+            adminPanel.classList.remove('hidden');
+        });
+
+        logoutAdminBtn.addEventListener('click', function() {
+            adminPanel.classList.add('hidden');
+        });
+
+        // Form submissions
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We will get back to you soon.');
+            this.reset();
+        });
+
+        document.getElementById('secureEmailForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Your secure message has been sent successfully.');
+            this.reset();
+        });
+
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Login functionality would be implemented here.');
+            loginModal.classList.add('hidden');
+            this.reset();
+        });
+
+        // Cookie consent banner (simplified example)
+        if (!localStorage.getItem('cookieConsent')) {
+            const cookieBanner = document.createElement('div');
+            cookieBanner.className = 'fixed bottom-0 left-0 right-0 bg-gray-800 text-white p-4 flex flex-col md:flex-row justify-between items-center';
+            cookieBanner.innerHTML = `
+                <div class="mb-2 md:mb-0">
+                    <p>We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies.</p>
+                </div>
+                <div class="flex space-x-2">
+                    <button id="acceptCookies" class="bg-emerald-500 text-white px-4 py-2 rounded hover:bg-emerald-600 transition">Accept</button>
+                    <button id="rejectCookies" class="bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700 transition">Reject</button>
+                </div>
+            `;
+            document.body.appendChild(cookieBanner);
+
+            document.getElementById('acceptCookies').addEventListener('click', function() {
+                localStorage.setItem('cookieConsent', 'accepted');
+                cookieBanner.remove();
+            });
+
+            document.getElementById('rejectCookies').addEventListener('click', function() {
+                localStorage.setItem('cookieConsent', 'rejected');
+                cookieBanner.remove();
+            });
+        }
+
+        // Security features (simplified examples)
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault(); // Prevent right-click
+        });
+
+        // In a real application, you would implement:
+        // - CSRF tokens for forms
+        // - Input validation
+        // - HTTPS enforcement
+        // - Secure cookie settings (HttpOnly, Secure, SameSite)
+        // - Rate limiting
+        // - Password hashing
+        // - Session management
+    </script>
+</body>
+</html>
